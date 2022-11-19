@@ -1,0 +1,48 @@
+# Hotkeys
+
+# Spawn a new instance of kitty
+super + Return
+	kitty
+
+# Spawn a new instance of firefox
+super + u
+	firefox
+	
+# Lock the screen and prompt to LightDM
+super + ctrl + l
+	dm-tool lock
+
+super + m
+	bspc desktop -l next
+
+# Reload sxhkdrc
+super + shift + r
+	pkill -usr1 -x sxhkd
+
+# Navigate through workspaces
+
+# focus them by their number
+super + {_,shift +}{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# focus previous, next workspace
+super + {p,n}
+	bspc desktop -f {prev,next}.local
+
+# Navigate windows on current workspace
+super + {_,shift +}{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Windows
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
